@@ -6,14 +6,6 @@ type StoreCreator<T extends BaseStore> = (set: StoreSetter<T>) => T;
 type UseStore<T extends BaseStore> = <Selected>(selector: (state: T) => Selected) => Selected;
 type StoreListener = () => void;
 
-export const sum = (a: number, b: number) => {
-	if (a > 0 && b > 0) {
-		return a + b;
-	}
-
-	return 0;
-};
-
 export const create = <T extends BaseStore = BaseStore>(stateCreator: StoreCreator<T>) => {
 	let state: T;
 	let listeners: Set<StoreListener> = new Set();
